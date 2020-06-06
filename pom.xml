@@ -274,6 +274,15 @@
                     <injectAllReactorProjects>true</injectAllReactorProjects>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.14.0</version>
+                <configuration>
+                    <skipTestProject>true</skipTestProject>
+                    <fetchRemote>false</fetchRemote>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
