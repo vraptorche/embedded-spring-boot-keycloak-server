@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
 
-    <artifactId>embedded-keycloak-server-custom</artifactId>
+    <artifactId>embedded-keycloak-server-auth-jware</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>Embedded Keycloak Server with Customizations</description>
 

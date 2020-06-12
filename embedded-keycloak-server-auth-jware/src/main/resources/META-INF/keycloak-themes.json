@@ -1,0 +1,16 @@
+{
+  "themes": [
+    {
+      "name": "demo",
+      "types": ["login"]
+    },
+    {
+      "name": "voidmail",
+      "types": ["Login"]
+    },
+    {
+      "name": "artandbiz",
+      "types": ["Login"]
+    }
+  ]
+}
