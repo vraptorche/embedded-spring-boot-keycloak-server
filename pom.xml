@@ -6,13 +6,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.github.thomasdarimont.keycloak</groupId>
     <artifactId>embedded-keycloak-server-spring-boot-parent</artifactId>
-    <version>2.2.0-SNAPSHOT</version>
+    <version>2.5.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -25,12 +25,13 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <keycloak.version>10.0.1</keycloak.version>
-        <resteasy.version>3.11.2.Final</resteasy.version>
-        <infinispan.version>9.4.19.Final</infinispan.version>
+        <keycloak.version>11.0.2</keycloak.version>
+        <resteasy.version>3.12.1.Final</resteasy.version>
+        <infinispan.version>10.1.8.Final</infinispan.version>
         <jgroups.version>4.2.4.Final</jgroups.version>
+        <smallrye-metrics.version>2.3.3</smallrye-metrics.version> <!-- 2.4.0-2.4.2 causes compilation error with Java 11 on Maven -->
 
-        <auto-service.version>1.0-rc6</auto-service.version>
+        <auto-service.version>1.0-rc7</auto-service.version>
     </properties>
 
     <modules>
@@ -175,8 +176,20 @@
                     <groupId>org.jboss.resteasy</groupId>
                     <artifactId>resteasy-multipart-provider</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>smallrye-metrics</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <!-- used for metrics collection -->
+            <groupId>io.smallrye</groupId>
+            <artifactId>smallrye-metrics</artifactId>
+            <version>${smallrye-metrics.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-model-jpa</artifactId>
@@ -269,6 +282,7 @@
 
                 <configuration>
                     <skipPoms>false</skipPoms>
+                    <useNativeGit>true</useNativeGit>
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
                     <!-- enables other plugins to use git properties -->
                     <injectAllReactorProjects>true</injectAllReactorProjects>
